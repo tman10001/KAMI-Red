@@ -15,7 +15,6 @@ import net.minecraftforge.common.ForgeHooks;
 import org.kamiblue.client.event.KamiEventBus;
 import org.kamiblue.client.event.events.GuiEvent;
 import org.kamiblue.client.event.events.RunGameLoopEvent;
-import org.kamiblue.client.gui.mc.KamiGuiUpdateNotification;
 import org.kamiblue.client.manager.managers.HotbarManager;
 import org.kamiblue.client.mixin.client.accessor.player.AccessorEntityPlayerSP;
 import org.kamiblue.client.mixin.client.accessor.player.AccessorPlayerControllerMP;
@@ -159,13 +158,6 @@ public abstract class MixinMinecraft {
         Wrapper.saveAndShutdown();
     }
 
-    @Inject(method = "init", at = @At("TAIL"))
-    public void init(CallbackInfo info) {
-        if (KamiGuiUpdateNotification.Companion.getLatest() != null && !KamiGuiUpdateNotification.Companion.isLatest()) {
-            Wrapper.getMinecraft().displayGuiScreen(new KamiGuiUpdateNotification());
-        }
-        PluginError.Companion.displayErrors();
-    }
 
 }
 

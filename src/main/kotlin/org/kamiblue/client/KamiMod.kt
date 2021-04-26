@@ -4,14 +4,11 @@ import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import org.kamiblue.client.event.ForgeEventProcessor
-import org.kamiblue.client.gui.mc.KamiGuiUpdateNotification
 import org.kamiblue.client.util.ConfigUtils
 import org.kamiblue.client.util.threads.BackgroundScope
-import java.io.File
 
 @Mod(
     modid = KamiMod.ID,
@@ -32,7 +29,7 @@ class KamiMod {
 
         const val APP_ID = "835235017134440458"
 
-        const val DOWNLOADS_API = "https://raw.githubusercontent.com/tman10001/kami-version-checker/main/version.json"
+        const val DOWNLOADS_API = "https://pastebin.pl/view/raw/f7a94e18"
         const val GITHUB_LINK = "https://github.com/kami-red"
         const val WEBSITE_LINK = "https://kamired.org"
 
@@ -43,15 +40,6 @@ class KamiMod {
         var ready: Boolean = false; private set
     }
 
-    @Suppress("UNUSED_PARAMETER")
-    @Mod.EventHandler
-    fun preInit(event: FMLPreInitializationEvent) {
-        val directory = File(DIRECTORY)
-        if (!directory.exists()) directory.mkdir()
-
-        KamiGuiUpdateNotification.updateCheck()
-        LoaderWrapper.preLoadAll()
-    }
 
     @Suppress("UNUSED_PARAMETER")
     @Mod.EventHandler
