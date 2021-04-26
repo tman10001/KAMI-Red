@@ -15,7 +15,7 @@ import java.io.IOException
 
 class KamiGuiUpdateNotification : GuiScreen() {
 
-    private val message = "A newer release of KAMI Blue is available ($latest)."
+    private val message = "A newer release of KAMI Red is available ($latest)."
 
     override fun initGui() {
         super.initGui()
@@ -32,13 +32,13 @@ class KamiGuiUpdateNotification : GuiScreen() {
     }
 
     override fun actionPerformed(button: GuiButton) {
-        if (button.id == 0) WebUtils.openWebLink(KamiMod.WEBSITE_LINK + "/download")
+        if (button.id == 0) WebUtils.openWebLink(KamiMod.WEBSITE_LINK )
 
         mc.displayGuiScreen(GuiMainMenu())
     }
 
     companion object {
-        private const val title = "KAMI Blue Update"
+        private const val title = "KAMI Red Update"
 
         var latest: String? = null // latest version (null if no internet or exception occurred)
         var isLatest = false
@@ -47,7 +47,7 @@ class KamiGuiUpdateNotification : GuiScreen() {
         fun updateCheck() {
             mainScope.launch {
                 try {
-                    KamiMod.LOG.info("Attempting KAMI Blue update check...")
+                    KamiMod.LOG.info("Attempting KAMI Red update check...")
 
                     val parser = JsonParser()
                     val rawJson = ConnectionUtils.requestRawJsonFrom(KamiMod.DOWNLOADS_API) {
@@ -58,9 +58,9 @@ class KamiGuiUpdateNotification : GuiScreen() {
                     isLatest = latest.equals(KamiMod.VERSION_MAJOR)
 
                     if (!isLatest) {
-                        KamiMod.LOG.warn("You are running an outdated version of KAMI Blue.\nCurrent: ${KamiMod.VERSION_MAJOR}\nLatest: $latest")
+                        KamiMod.LOG.warn("You are running an outdated version of KAMI Red.\nCurrent: ${KamiMod.VERSION_MAJOR}\nLatest: $latest")
                     } else {
-                        KamiMod.LOG.info("Your KAMI Blue (" + KamiMod.VERSION_MAJOR + ") is up-to-date with the latest stable release.")
+                        KamiMod.LOG.info("Your KAMI Red (" + KamiMod.VERSION_MAJOR + ") is up-to-date with the latest stable release.")
                     }
                 } catch (e: IOException) {
                     KamiMod.LOG.error("Oes noes! An exception was thrown during the update check.", e)

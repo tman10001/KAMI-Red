@@ -32,7 +32,7 @@ class KamiMod {
 
         const val APP_ID = "835235017134440458"
 
-        const val DOWNLOADS_API = "https://raw.githubusercontent.com/tman10001/kami-version-checker/main/downloads_api.txt"
+        const val DOWNLOADS_API = "https://raw.githubusercontent.com/tman10001/kami-version-checker/main/version.json"
         const val GITHUB_LINK = "https://github.com/kami-red"
         const val WEBSITE_LINK = "https://kamired.org"
 
